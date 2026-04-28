@@ -79,9 +79,6 @@ We don’t take access to any other folder of your Google Drive.
 
 
 
-
-
-
 DATA PROTECTION  
 
 
