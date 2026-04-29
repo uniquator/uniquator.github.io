@@ -1,7 +1,3 @@
-# UNIQUATOR FILENEST
-[https://uniquator.github.io](https://uniquator.github.io) | [https://uniquator.me](https://uniquator.me)
-
----
 
 ## PRIVACY POLICY
 **Effective Date:** 05 May 2026
@@ -21,7 +17,7 @@ We may collect the following information through the App:
     * This data is collected only when a user reports a bug.
 * **Regional Data:** Your general location (limited to State/Country) via IP address for statistical purposes and policy enforcement.
 * **Third-Party Services:** We utilize third-party services including Google Ads and Google Drive (if signed in).
-    * These services may collect data according to their own policies.
+    * These services may collect data according to their own policies. You can check out Google's Policy [here](https://policies.google.com/privacy) and Your data safety for Ads [here.](https://safety.google/safety/ads-data)
 
 #### Data processed locally (Not sent to our servers):
 * Files selected for processing.
