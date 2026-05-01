@@ -14,12 +14,14 @@
             margin: 0 auto;
             padding: 20px;
             background-color: #f4f7f6;
+            transition: background-color 0.3s, color 0.3s;
         }
         .container {
             background-color: #ffffff;
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
         }
         h1, h2, h3 {
             color: #2c3e50;
@@ -55,31 +57,83 @@
         li {
             margin-bottom: 10px;
         }
+        hr {
+            margin-top: 40px; 
+            border: 0; 
+            border-top: 1px solid #ecf0f1;
+        }
         
-        /* Dark mode support for a better user experience */
-        @media (prefers-color-scheme: dark) {
+        /* Mobile-friendly tweaks */
+        @media (max-width: 600px) {
             body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Dark mode classes */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        body.dark-mode .container {
+            background-color: #1e1e1e;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
+            color: #ffffff;
+        }
+        body.dark-mode h1 {
+            border-bottom: 3px solid #2980b9;
+        }
+        body.dark-mode h2 {
+            border-bottom: 1px solid #333;
+        }
+        body.dark-mode a {
+            color: #5dade2;
+        }
+        body.dark-mode .date {
+            color: #aaa;
+        }
+        body.dark-mode hr {
+            border-top: 1px solid #333;
+        }
+
+        /* Auto dark mode based on system preference */
+        @media (prefers-color-scheme: dark) {
+            body:not(.light-mode) {
                 background-color: #121212;
                 color: #e0e0e0;
             }
-            .container {
+            body:not(.light-mode) .container {
                 background-color: #1e1e1e;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             }
-            h1, h2, h3 {
+            body:not(.light-mode) h1, body:not(.light-mode) h2, body:not(.light-mode) h3 {
                 color: #ffffff;
             }
-            h1 {
+            body:not(.light-mode) h1 {
                 border-bottom: 3px solid #2980b9;
             }
-            h2 {
+            body:not(.light-mode) h2 {
                 border-bottom: 1px solid #333;
             }
-            a {
+            body:not(.light-mode) a {
                 color: #5dade2;
             }
-            .date {
+            body:not(.light-mode) .date {
                 color: #aaa;
+            }
+            body:not(.light-mode) hr {
+                border-top: 1px solid #333;
             }
         }
     </style>
@@ -158,12 +212,21 @@
             <li>Enforcement of our policies and terms.</li>
         </ul>
 
-        <hr style="margin-top: 40px; border: 0; border-top: 1px solid #ecf0f1;">
+        <hr>
         
         <p style="text-align: center; margin-top: 20px;">
             <strong><a href="https://uniquator.github.io" target="_blank">Help Center</a></strong>
         </p>
     </div>
 
+    <!-- Script to check for ?dark=1 in the URL -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('dark') === '1') {
+            document.body.classList.add('dark-mode');
+        } else if (urlParams.get('dark') === '0') {
+            document.body.classList.add('light-mode'); // Forces light mode if ?dark=0 is used
+        }
+    </script>
 </body>
 </html>
