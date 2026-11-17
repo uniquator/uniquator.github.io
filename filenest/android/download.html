@@ -47,7 +47,7 @@
   </footer>
 
   <script>
-    fetch('https://filenest.uniquator.me/android/lver.txt')
+    fetch('https://uniquator.github.io/filenest/android/lver.txt')
       .then(response => response.text())
       .then(data => document.getElementById('version-text').innerText = 'v' + data.trim())
       .catch(() => document.getElementById('version-text').innerText = 'v0.4');
