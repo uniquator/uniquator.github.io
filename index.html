@@ -1,10 +1,289 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <title>Uniquator</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Uniquator creates privacy-focused apps for a more considered digital life." />
+    <title>Uniquator — Private by design</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #171717;
+        --muted: #6f6f6a;
+        --line: rgba(23, 23, 23, .17);
+        --soft-line: rgba(23, 23, 23, .08);
+        --paper: #f4f4f0;
+        --panel: #e9e9e4;
+        --accent: #d7ff5f;
+        --max: 1180px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme]) {
+          color-scheme: dark;
+          --ink: #f3f3f0;
+          --muted: #9a9a96;
+          --line: rgba(243, 243, 240, .15);
+          --soft-line: rgba(243, 243, 240, .08);
+          --paper: #0c0c0c;
+          --panel: #121212;
+        }
+      }
+      :root[data-theme="dark"] {
+        color-scheme: dark;
+        --ink: #f3f3f0;
+        --muted: #9a9a96;
+        --line: rgba(243, 243, 240, .15);
+        --soft-line: rgba(243, 243, 240, .08);
+        --paper: #0c0c0c;
+        --panel: #121212;
+      }
+      :root[data-theme="light"] { color-scheme: light; }
+
+      * { box-sizing: border-box; }
+      html, body { max-width: 100%; overflow-x: clip; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        background-image: linear-gradient(var(--soft-line) 1px, transparent 1px), linear-gradient(90deg, var(--soft-line) 1px, transparent 1px);
+        background-size: 72px 72px;
+        content: "";
+        inset: 0;
+        mask-image: linear-gradient(to bottom, black 0%, transparent 58%);
+        opacity: .38;
+        pointer-events: none;
+        position: fixed;
+        z-index: -1;
+      }
+      a { color: inherit; text-decoration: none; }
+      .wrap { margin: 0 auto; max-width: var(--max); padding: 0 28px; width: 100%; }
+      .nav {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 28px 0;
+      }
+      .brand { align-items: center; display: inline-flex; gap: 11px; font-size: 15px; font-weight: 700; letter-spacing: -.03em; }
+      .mark { display: grid; height: 24px; place-items: center; width: 24px; }
+      .mark svg { height: 100%; width: 100%; }
+      .nav-links { align-items: center; display: flex; gap: 28px; }
+      .nav-links a { color: var(--muted); font-size: 13px; transition: color .25s ease; }
+      .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); }
+      .nav-cta { border: 1px solid var(--line); border-radius: 999px; color: var(--ink) !important; padding: 10px 15px; }
+      .nav-cta:hover, .nav-cta:focus-visible { background: var(--ink); color: var(--paper) !important; }
+      .theme { position: relative; }
+      .theme-toggle { background: transparent; border: 0; color: var(--muted); cursor: pointer; font: inherit; font-size: 13px; padding: 8px 0; }
+      .theme-toggle:hover, .theme-toggle:focus-visible { color: var(--ink); }
+      .theme-menu { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 12px 30px rgba(0, 0, 0, .12); display: grid; gap: 4px; min-width: 120px; padding: 6px; position: absolute; right: 0; top: 38px; z-index: 3; }
+      .theme-menu[hidden] { display: none; }
+      .theme-option { background: transparent; border: 0; border-radius: 7px; color: var(--muted); cursor: pointer; font: inherit; font-size: 12px; padding: 8px 10px; text-align: left; }
+      .theme-option:hover, .theme-option:focus-visible, .theme-option[aria-pressed="true"] { background: var(--panel); color: var(--ink); }
+
+      .hero { min-height: 680px; padding: 105px 0 130px; position: relative; }
+      .eyebrow, .kicker { align-items: center; color: var(--muted); display: flex; font-size: 11px; gap: 10px; letter-spacing: .16em; text-transform: uppercase; }
+      .eyebrow::before { background: var(--accent); border-radius: 50%; content: ""; height: 6px; width: 6px; }
+      h1 { font-size: clamp(62px, 10.4vw, 144px); font-weight: 500; letter-spacing: -.09em; line-height: .88; margin: 32px 0 42px; max-width: 930px; }
+      h1 em { color: var(--muted); font-style: normal; }
+      .hero-bottom { align-items: end; display: flex; justify-content: space-between; }
+      .hero-copy { color: var(--muted); font-size: 16px; line-height: 1.65; max-width: 350px; }
+      .hero-copy strong { color: var(--ink); font-weight: 500; }
+      .scroll-note { align-items: center; color: var(--muted); display: flex; font-size: 11px; gap: 12px; letter-spacing: .15em; text-transform: uppercase; }
+      .scroll-note span { animation: nudge 1.8s ease-in-out infinite; border-bottom: 1px solid var(--muted); border-right: 1px solid var(--muted); height: 8px; transform: rotate(45deg); width: 8px; }
+
+      .ticker { border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); overflow: hidden; }
+      .ticker-track { animation: drift 22s linear infinite; display: flex; min-width: max-content; width: max-content; }
+      .ticker-item { align-items: center; display: flex; font-size: 12px; gap: 34px; letter-spacing: .12em; padding: 17px 34px; text-transform: uppercase; }
+      .ticker-item::after { color: var(--accent); content: "✳"; font-size: 16px; }
+
+      section { padding: 130px 0; }
+      .section-head { align-items: end; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding-bottom: 22px; }
+      .section-head h2 { font-size: clamp(34px, 5vw, 64px); font-weight: 500; letter-spacing: -.07em; line-height: .95; margin: 0; }
+      .section-intro { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 0; max-width: 260px; }
+      .products { display: grid; gap: 1px; grid-template-columns: repeat(2, 1fr); margin-top: 1px; }
+      .product { background: var(--panel); min-height: 330px; padding: 28px; position: relative; transition: background .35s ease, transform .35s ease; }
+      .product:hover { background: color-mix(in srgb, var(--panel) 82%, var(--ink)); transform: translateY(-4px); }
+      .product:first-child { border-radius: 0 0 0 18px; }
+      .product:last-child { border-radius: 0 0 18px 0; }
+      .product-label { color: var(--muted); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+      .product h3 { font-size: clamp(28px, 4vw, 48px); font-weight: 500; letter-spacing: -.07em; margin: 74px 0 14px; }
+      .product p { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 0; max-width: 310px; }
+      .product-arrow { bottom: 28px; font-size: 23px; position: absolute; right: 28px; transition: transform .25s ease; }
+      .product:hover .product-arrow { transform: translate(4px, -4px); }
+
+      .manifesto { border-top: 1px solid var(--line); }
+      .manifesto-content { display: grid; gap: 50px; grid-template-columns: 1fr 1.6fr; }
+      .manifesto h2 { font-size: clamp(42px, 6vw, 78px); font-weight: 500; letter-spacing: -.08em; line-height: .95; margin: 0; }
+      .manifesto h2 span { color: var(--muted); }
+      .manifesto-text { color: var(--muted); font-size: clamp(18px, 2.2vw, 27px); letter-spacing: -.035em; line-height: 1.35; margin: 4px 0 0; max-width: 640px; }
+      .manifesto-text strong { color: var(--ink); font-weight: 400; }
+      .principles { border-top: 1px solid var(--line); display: grid; gap: 1px; grid-template-columns: repeat(3, 1fr); margin-top: 95px; }
+      .principle { border-right: 1px solid var(--line); padding: 24px 24px 0 0; }
+      .principle + .principle { padding-left: 24px; }
+      .principle:last-child { border: 0; }
+      .principle-number { color: var(--accent); font-size: 11px; }
+      .principle h3 { font-size: 17px; font-weight: 500; margin: 38px 0 10px; }
+      .principle p { color: var(--muted); font-size: 13px; line-height: 1.6; margin: 0; max-width: 220px; }
+
+      footer { border-top: 1px solid var(--line); padding: 26px 0 34px; }
+      .footer-row { align-items: center; display: flex; justify-content: space-between; }
+      .footer-note, .footer-links { color: var(--muted); font-size: 12px; }
+      .footer-links { display: flex; gap: 22px; }
+      .footer-links a:hover { color: var(--ink); }
+      .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s ease; }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+      @keyframes drift { to { transform: translateX(-50%); } }
+      @keyframes nudge { 0%, 100% { transform: translateY(-3px) rotate(45deg); } 50% { transform: translateY(3px) rotate(45deg); } }
+      @media (max-width: 640px) {
+        .wrap { padding: 0 20px; }
+        .nav { padding: 20px 0; }
+        .nav-links a:not(.nav-cta) { display: none; }
+        .hero { min-height: 620px; padding: 100px 0 90px; }
+        .hero-bottom, .section-head { align-items: start; flex-direction: column; gap: 28px; }
+        .scroll-note { display: none; }
+        section { padding: 90px 0; }
+        .products, .manifesto-content { grid-template-columns: 1fr; }
+        .product { min-height: 285px; }
+        .product:first-child { border-radius: 0; }
+        .product:last-child { border-radius: 0 0 14px 14px; }
+        .principles { grid-template-columns: 1fr; margin-top: 60px; }
+        .principle, .principle + .principle { border-bottom: 1px solid var(--line); border-right: 0; padding: 22px 0; }
+        .principle:last-child { border-bottom: 0; }
+        .principle h3 { margin-top: 24px; }
+        .footer-row { align-items: start; flex-direction: column; gap: 20px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      }
+    </style>
   </head>
   <body>
-    <b>Welcome to Uniquator</b>
-<p>Developer at Work. Check back later</p>
+    <header class="wrap">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="/" aria-label="Uniquator home">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4v9.5a7 7 0 0 0 14 0V4M5 4h4m6 0h4" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/><circle cx="12" cy="20" r="1.25" fill="#d7ff5f"/></svg></span>
+          Uniquator
+        </a>
+        <div class="nav-links">
+          <a href="#work">Our work</a>
+          <a href="#about">About</a>
+          <div class="theme">
+            <button class="theme-toggle" type="button" aria-expanded="false" aria-controls="theme-menu">Theme</button>
+            <div class="theme-menu" id="theme-menu" hidden>
+              <button class="theme-option" type="button" data-theme-choice="auto">Auto</button>
+              <button class="theme-option" type="button" data-theme-choice="light">Light</button>
+              <button class="theme-option" type="button" data-theme-choice="dark">Dark</button>
+            </div>
+          </div>
+          <a class="nav-cta" href="/filenest/">Try Filenest <span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero wrap">
+        <div class="eyebrow reveal">Independent technology company</div>
+        <h1 class="reveal">Built for a<br /><em>quieter</em> internet.</h1>
+        <div class="hero-bottom reveal">
+          <p class="hero-copy"><strong>Uniquator makes privacy-focused apps</strong> that put people back in control of their digital lives.</p>
+          <div class="scroll-note">Scroll to explore <span aria-hidden="true"></span></div>
+        </div>
+      </section>
+
+      <div class="ticker" aria-label="Uniquator principles">
+        <div class="ticker-track">
+          <div class="ticker-item">Privacy is a feature</div><div class="ticker-item">Useful by default</div><div class="ticker-item">Made with intent</div>
+          <div class="ticker-item">Privacy is a feature</div><div class="ticker-item">Useful by default</div><div class="ticker-item">Made with intent</div>
+        </div>
+      </div>
+
+      <section class="wrap" id="work">
+        <div class="section-head reveal">
+          <h2>Our work</h2>
+          <p class="section-intro">Small, thoughtful tools for the parts of life that deserve a little more care.</p>
+        </div>
+        <div class="products reveal">
+          <a class="product" href="https://uniquator.github.io/filenest/">
+            <div class="product-label">01 / Available now</div>
+            <h3>Filenest</h3>
+            <p>A private, simple home for your files. No noise. No tracking. Just your documents, where they belong.</p>
+            <div class="product-arrow" aria-hidden="true">↗</div>
+          </a>
+          <div class="product">
+            <div class="product-label">02 / In the works</div>
+            <h3>More soon<span style="color: var(--accent)">.</span></h3>
+            <p>We are working on a new set of quiet tools that make the everyday digital experience feel more human.</p>
+            <div class="product-arrow" aria-hidden="true">→</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="manifesto wrap" id="about">
+        <div class="manifesto-content">
+          <div class="kicker reveal">Why Uniquator</div>
+          <div class="reveal">
+            <h2>Technology should<br /><span>work for you.</span></h2>
+            <p class="manifesto-text">We believe the best software is <strong>calm, clear, and on your side.</strong> That means no dark patterns, no hidden agendas, and no trading your privacy for convenience.</p>
+          </div>
+        </div>
+        <div class="principles reveal">
+          <div class="principle"><div class="principle-number">01</div><h3>Private by design</h3><p>Your data is yours. We build with that as a starting point, not a feature request.</p></div>
+          <div class="principle"><div class="principle-number">02</div><h3>Less, but better</h3><p>Every screen and interaction earns its place. Simplicity is a form of respect.</p></div>
+          <div class="principle"><div class="principle-number">03</div><h3>Built to last</h3><p>Durable tools over disposable trends. We make products for the long term.</p></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap footer-row">
+        <div class="footer-note">© 2026 Uniquator. Made with intent.</div>
+        <div class="footer-links"><a href="https://uniquator.github.io/filenest">Filenest</a><a href="mailto:hello@uniquator.in">Contact</a></div>
+      </div>
+    </footer>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.querySelector(".theme-toggle");
+      const themeMenu = document.querySelector(".theme-menu");
+      const themeOptions = document.querySelectorAll("[data-theme-choice]");
+      const savedTheme = localStorage.getItem("uniquator-theme") || "auto";
+      const applyTheme = (theme) => {
+        if (theme === "auto") root.removeAttribute("data-theme");
+        else root.dataset.theme = theme;
+        localStorage.setItem("uniquator-theme", theme);
+        themeOptions.forEach((option) => option.setAttribute("aria-pressed", String(option.dataset.themeChoice === theme)));
+        themeToggle.textContent = `Theme: ${theme[0].toUpperCase()}${theme.slice(1)}`;
+      };
+      applyTheme(savedTheme);
+      themeToggle.addEventListener("click", () => {
+        const isOpen = !themeMenu.hidden;
+        themeMenu.hidden = isOpen;
+        themeToggle.setAttribute("aria-expanded", String(!isOpen));
+      });
+      themeOptions.forEach((option) => option.addEventListener("click", () => {
+        applyTheme(option.dataset.themeChoice);
+        themeMenu.hidden = true;
+        themeToggle.setAttribute("aria-expanded", "false");
+      }));
+      document.addEventListener("click", (event) => {
+        if (!event.target.closest(".theme")) {
+          themeMenu.hidden = true;
+          themeToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+    </script>
   </body>
 </html>
