@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filenest Home</title>
+  <meta name="description" content="Use Filenest to merge, split, compress, trim, rearrange, and convert PDF and image files directly in your browser.">
+  <meta name="keywords" content="PDF editor, PDF compressor, split PDF, trim PDF, rearrange PDF, image converter, image compressor">
+  <meta name="author" content="Filenest">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://filenest.uniquator.me/home.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Filenest">
+  <meta property="og:title" content="Filenest Tools - PDF and Image Workspace">
+  <meta property="og:description" content="Process PDFs and images with fast browser-based tools for merge, split, compress, trim, rearrange, and conversion.">
+  <meta property="og:url" content="https://filenest.uniquator.me/home.html">
+  <meta property="og:image" content="https://filenest.uniquator.me/logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Filenest Tools - PDF and Image Workspace">
+  <meta name="twitter:description" content="Fast browser tools for PDFs and images.">
+  <meta name="twitter:image" content="https://filenest.uniquator.me/logo.png">
+  <link rel="icon" href="https://filenest.uniquator.me/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="app-shell">
+    <a class="brand" href="index.html" aria-label="Filenest landing page">
+      <img class="brand-mark" src="https://filenest.uniquator.me/logo.png" alt="" aria-hidden="true">
+      <span>Filenest</span>
+    </a>
+    <div class="app-actions">
+      <button class="icon-link theme-toggle" type="button" data-theme-toggle title="Toggle dark mode" aria-label="Toggle dark mode">
+        <span class="material-symbols-rounded" aria-hidden="true">dark_mode</span>
+      </button>
+      <a class="icon-link android-download-link" id="androidHeaderDownload" href="https://filenest.uniquator.me/android/download" title="Download Android app" aria-label="Download Android app">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>
+      </a>
+      <button class="icon-link menu-toggle" type="button" id="menuToggle" title="Choose tool" aria-label="Choose tool" aria-expanded="false" aria-controls="mobileToolMenu">
+        <span class="material-symbols-rounded" aria-hidden="true">menu</span>
+      </button>
+      <a class="icon-link" href="index.html" title="Landing page" aria-label="Landing page">
+        <span class="material-symbols-rounded" aria-hidden="true">home</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="mobile-tool-menu" id="mobileToolMenu" hidden>
+    <div class="mobile-tool-sheet">
+      <div class="mobile-tool-head">
+        <div>
+          <p class="eyebrow">Choose Tool</p>
+          <h2>Filenest</h2>
+        </div>
+        <button class="icon-link" type="button" id="menuClose" title="Close menu" aria-label="Close menu">
+          <span class="material-symbols-rounded" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <div class="mobile-tool-list" id="mobileToolList" aria-label="Mobile tool picker"></div>
+    </div>
+  </div>
+
+  <div class="android-app-modal" id="androidAppModal" hidden>
+    <div class="android-app-dialog" role="dialog" aria-modal="true" aria-labelledby="androidAppTitle">
+      <button class="modal-close material-symbols-rounded" type="button" id="androidModalClose" aria-label="Close">close</button>
+      <img src="https://filenest.uniquator.me/logo.png" alt="" aria-hidden="true">
+      <p class="eyebrow">Android App</p>
+      <h2 id="androidAppTitle">Get Filenest for Android</h2>
+      <p>Use Filenest with a smoother mobile experience from the Android app.</p>
+      <div class="modal-actions">
+        <a class="btn btn-primary" href="https://filenest.uniquator.me/android/download">
+          <span class="material-symbols-rounded" aria-hidden="true">android</span>
+          Download app
+        </a>
+        <button class="btn btn-secondary" type="button" id="androidModalLater">Continue web</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="download-modal" id="downloadModal" hidden>
+    <div class="download-dialog" role="dialog" aria-modal="true" aria-labelledby="downloadModalTitle">
+      <button class="modal-close material-symbols-rounded" type="button" id="downloadModalClose" aria-label="Close">close</button>
+      <p class="eyebrow">Output</p>
+      <h2 id="downloadModalTitle">Your file is ready</h2>
+      <p id="downloadModalMeta"></p>
+      <div class="modal-download-actions" id="downloadModalActions"></div>
+    </div>
+  </div>
+
+  <main class="workspace">
+    <aside class="sidebar" aria-label="Tool groups">
+      <div>
+        <p class="eyebrow">Workspace</p>
+        <h1>File tools</h1>
+      </div>
+      <div class="tab-list" role="tablist" aria-label="Filenest tools">
+        <button class="tab-button active" type="button" data-tool="merge">
+          <span class="material-symbols-rounded" aria-hidden="true">merge_type</span>
+          Merge PDF
+        </button>
+        <button class="tab-button" type="button" data-tool="split">
+          <span class="material-symbols-rounded" aria-hidden="true">call_split</span>
+          Split PDF
+        </button>
+        <button class="tab-button" type="button" data-tool="compress-pdf">
+          <span class="material-symbols-rounded" aria-hidden="true">compress</span>
+          Compress PDF
+        </button>
+        <button class="tab-button" type="button" data-tool="image-to-pdf">
+          <span class="material-symbols-rounded" aria-hidden="true">image</span>
+          Image to PDF
+        </button>
+        <button class="tab-button" type="button" data-tool="pdf-to-image">
+          <span class="material-symbols-rounded" aria-hidden="true">perm_media</span>
+          PDF to Image
+        </button>
+        <button class="tab-button" type="button" data-tool="rearrange">
+          <span class="material-symbols-rounded" aria-hidden="true">dashboard_customize</span>
+          Rearrange PDF
+        </button>
+        <button class="tab-button" type="button" data-tool="trim">
+          <span class="material-symbols-rounded" aria-hidden="true">content_cut</span>
+          Trim PDF
+        </button>
+        <button class="tab-button" type="button" data-tool="compress-image">
+          <span class="material-symbols-rounded" aria-hidden="true">photo_size_select_small</span>
+          Compress Image
+        </button>
+        <button class="tab-button" type="button" data-tool="convert-image">
+          <span class="material-symbols-rounded" aria-hidden="true">change_circle</span>
+          Convert Image
+        </button>
+      </div>
+    </aside>
+
+    <section class="tool-surface" aria-live="polite">
+      <div class="tool-header">
+        <div>
+          <p class="eyebrow" id="toolCategory">PDF Tool</p>
+          <h2 id="toolTitle">Merge PDF</h2>
+          <p id="toolDescription">Combine multiple PDF files into one document.</p>
+        </div>
+        <span class="tool-icon material-symbols-rounded" id="toolIcon" aria-hidden="true">merge_type</span>
+      </div>
+
+      <form class="tool-form" id="toolForm">
+        <label class="drop-zone" for="fileInput" id="dropZone">
+          <input id="fileInput" type="file" multiple>
+          <span class="material-symbols-rounded" aria-hidden="true">upload_file</span>
+          <strong>Drop files here or browse</strong>
+          <small id="fileHint">PDF files only</small>
+        </label>
+
+        <div class="file-list" id="fileList" aria-label="Selected files"></div>
+
+        <div class="settings" id="settingsPanel"></div>
+
+        <div class="page-organizer" id="pageOrganizer" hidden></div>
+
+        <div class="status-bar">
+          <span id="statusText">Ready.</span>
+          <button class="btn btn-primary" type="submit" id="runButton">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            Run tool
+          </button>
+        </div>
+      </form>
+
+      <div class="result-panel" id="resultPanel" hidden>
+        <div>
+          <p class="eyebrow">Output</p>
+          <h3 id="resultTitle">Your file is ready</h3>
+          <p id="resultMeta"></p>
+        </div>
+        <div class="result-actions" id="resultActions"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer app-footer">
+    <span>Filenest</span>
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://bhaveshrohilla.github.io">About</a>
+    </nav>
+  </footer>
+  <script src="theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO & Open Graph -->
+  <title>Filenest | Android Toolkit</title>
+  <meta name="description" content="Filenest for Android: Privacy-focused toolkit for PDF management, image conversion, and cloud storage.">
+  <meta property="og:title" content="Filenest | Modern Android PDF Tools">
+  <meta property="og:description" content="Manage PDFs, compress images, and sync to the cloud securely with Filenest.">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:type" content="website">
+
+  <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #ffffff; --text: #000000; --border: #000000; }
+    body { font-family: 'Lexend', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+    header { display: flex; align-items: center; padding: 20px 40px; border-bottom: 1px solid var(--border); gap: 20px; }
+    section, footer { padding: 60px 20px; border-bottom: 1px solid var(--border); text-align: center; }
+    .logo { width: 60px; height: auto; }
+    .brand-group { text-align: left; }
+    .brand { font-weight: 900; font-size: 1.5rem; text-decoration: none; color: var(--text); display: block; }
+    .version { font-size: 0.9rem; color: #555; }
+    .btn { display: inline-block; padding: 15px 30px; border: 2px solid var(--border); background: var(--text); color: var(--bg); text-decoration: none; font-weight: bold; margin: 10px; }
+    .btn-ghost { background: var(--bg); color: var(--text); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 40px auto; }
+    .card { border: 1px solid var(--border); padding: 30px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="Filenest Logo" class="logo">
+    <div class="brand-group">
+      <a href="#" class="brand">Filenest</a>
+      <span id="version-text" class="version">Loading...</span>
+    </div>
+  </header>
+
+  <section id="hero">
+    <h1>Filenest for Android</h1>
+    <p>A privacy-focused, offline-first toolkit for every file management need.</p>
+    <a href="download.html" class="btn">Download App</a>
+    <a href="betatesting.html" class="btn btn-ghost">Join Beta Testing</a>
+  </section>
+
+  <section id="features">
+    <h2>Core Features</h2>
+    <div class="grid">
+      <div class="card"><h3>Cloud Integration</h3><p>Direct upload to Google Drive.</p></div>
+      <div class="card"><h3>Image Tools</h3><p>Professional Image Compressor and Image Converter.</p></div>
+      <div class="card"><h3>PDF Suite</h3><p>Merge, split, rearrange, protect, and unlock your documents.</p></div>
+      <div class="card"><h3>Format Conversion</h3><p>Seamless Image to PDF and PDF to Image conversion.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Filenest Project</p>
+    <a href="https://uniquator.github.io/public/policies/filenest">Privacy Policy</a>
+  </footer>
+
+  <script>
+    fetch('https://filenest.uniquator.me/android/lver.txt')
+      .then(response => response.text())
+      .then(data => document.getElementById('version-text').innerText = 'v' + data.trim())
+      .catch(() => document.getElementById('version-text').innerText = 'v0.4');
+  </script>
+</body>
+</html>

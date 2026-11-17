@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download Filenest | Android Toolkit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #ffffff; --text: #000000; --border: #000000; }
+    body { font-family: 'Lexend', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+    header { display: flex; align-items: center; padding: 20px 40px; border-bottom: 1px solid var(--border); gap: 20px; }
+    section, footer { padding: 40px 20px; border-bottom: 1px solid var(--border); text-align: center; }
+    .logo { width: 60px; height: auto; }
+    .brand-group { text-align: left; }
+    .brand { font-weight: 900; font-size: 1.5rem; text-decoration: none; color: var(--text); display: block; }
+    .version { font-size: 0.9rem; color: #555; }
+    .btn { display: inline-block; padding: 15px 30px; border: 2px solid var(--border); background: var(--text); color: var(--bg); text-decoration: none; font-weight: bold; margin: 10px; }
+    .btn-ghost { background: var(--bg); color: var(--text); }
+    .card { border: 1px solid var(--border); padding: 40px; max-width: 500px; margin: 40px auto; }
+    footer a { color: var(--text); margin: 0 10px; text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="Filenest Logo" class="logo">
+    <div class="brand-group">
+      <a href="index.html" class="brand">Filenest</a>
+      <span id="version-text" class="version">Loading...</span>
+    </div>
+  </header>
+
+  <section>
+    <h1>Download Filenest</h1>
+    <div class="card">
+      <h3>Ready to install</h3>
+      <a href="latest-filenest.apk" class="btn" download>Download APK</a>
+      <a href="index.html" class="btn btn-ghost">Back Home</a>
+    </div>
+    <a href="https://www.virustotal.com/gui/url/d449b759b3ab5cd8bc78555a5354096bc28dc8ddaf44b67f45e9f32a22145460/details" target="_blank">View VirusTotal Report</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Filenest Project</p>
+    <a href="https://uniquator.github.io/public/policies/filenest">Privacy Policy</a>
+    <a href="https://bhaveshrohilla.me">Developer Site</a>
+  </footer>
+
+  <script>
+    fetch('https://filenest.uniquator.me/android/lver.txt')
+      .then(response => response.text())
+      .then(data => document.getElementById('version-text').innerText = 'v' + data.trim())
+      .catch(() => document.getElementById('version-text').innerText = 'v0.4');
+  </script>
+</body>
+</html>
