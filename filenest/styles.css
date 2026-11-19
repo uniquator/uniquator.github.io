@@ -551,6 +551,7 @@ select {
   grid-template-columns: 0.86fr 1.14fr;
   gap: 24px;
   align-items: center;
+  margin: 24px auto;
   padding: 48px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
