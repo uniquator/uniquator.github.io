@@ -1,3 +1,4 @@
 Version 1.4 Fixes
-* Add Nearby Share Functionally
-* Minor Fixes
+* Fixed Minor Bugs
+* TTS Added
+* Music Support Added
