@@ -1,4 +1,5 @@
-Version 1.4 Fixes
-* Fixed Minor Bugs
-* TTS Added
-* Music Support Added
+Version 1.6 Fixes
+* Fixed Minor Issues
+* Removed Nearby Share
+* Added Beta Tester Account
+* You can now change your quick share app
