@@ -1,227 +1,1192 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Filenest</title>
+    <meta name="theme-color" content="#f5f7fb">
+    <meta name="description" content="Filenest Privacy Policy. Learn how Uniquator handles your information, protects your privacy, and processes data.">
+    <title>Privacy Policy - Filenest | Uniquator</title>
+
     <style>
-        /* Base styles */
+        :root {
+            color-scheme: light;
+            --bg: #f5f7fb;
+            --surface: #ffffff;
+            --text: #202938;
+            --muted: #697586;
+            --accent: #2878e8;
+            --accent-bg: #edf5ff;
+            --border: #e8edf4;
+            --shadow: 0 12px 40px rgba(25, 45, 75, .06);
+        }
+
+        body.dark-mode {
+            color-scheme: dark;
+            --bg: #10141c;
+            --surface: #191f2a;
+            --text: #e9edf5;
+            --muted: #a0aaba;
+            --accent: #78aaff;
+            --accent-bg: #202f46;
+            --border: #2b3442;
+            --shadow: 0 12px 40px rgba(0, 0, 0, .2);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f7f6;
-            transition: background-color 0.3s, color 0.3s;
+            margin: 0;
+            padding: 36px 18px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, "Segoe UI", system-ui, -apple-system,
+                         BlinkMacSystemFont, sans-serif;
+            font-size: 15px;
+            line-height: 1.75;
+            transition: background .25s, color .25s;
         }
-        .container {
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: background-color 0.3s;
-        }
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        h1 {
-            text-align: center;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 15px;
-            margin-bottom: 5px;
-        }
-        h2 {
-            margin-top: 35px;
-            border-bottom: 1px solid #ecf0f1;
-            padding-bottom: 8px;
-        }
+
         a {
-            color: #3498db;
+            color: var(--accent);
             text-decoration: none;
-            font-weight: bold;
+            overflow-wrap: anywhere;
         }
+
         a:hover {
             text-decoration: underline;
         }
-        .date {
+
+        .page {
+            max-width: 1040px;
+            margin: auto;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-size: 17px;
+            font-weight: 750;
+            letter-spacing: -.4px;
+        }
+
+        .brand-icon {
+            display: grid;
+            place-items: center;
+            width: 39px;
+            height: 39px;
+            border-radius: 12px;
+            color: white;
+            background: linear-gradient(135deg, #2878e8, #1552bb);
+            font-size: 18px;
+        }
+
+        .theme-button {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 10px 14px;
+            background: var(--surface);
+            color: var(--text);
+            font: inherit;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .theme-button:hover {
+            border-color: var(--accent);
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 235px minmax(0, 1fr);
+            gap: 22px;
+            align-items: start;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            padding: 22px 17px;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: var(--surface);
+        }
+
+        .sidebar-title {
+            margin: 0 0 13px;
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 750;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 7px 10px;
+            margin: 2px 0;
+            border-radius: 8px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 550;
+        }
+
+        .sidebar a:hover {
+            background: var(--accent-bg);
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .content {
+            min-width: 0;
+            padding: 42px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .hero {
+            padding-bottom: 28px;
+            border-bottom: 2px solid var(--border);
             text-align: center;
-            font-style: italic;
-            color: #7f8c8d;
-            margin-bottom: 30px;
         }
-        ul {
-            padding-left: 20px;
+
+        .eyebrow {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 30px;
+            background: var(--accent-bg);
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 750;
+            letter-spacing: .7px;
+            text-transform: uppercase;
         }
+
+        h1 {
+            margin: 13px 0 8px;
+            font-size: clamp(29px, 5vw, 42px);
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .date {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .notice {
+            margin: 26px 0;
+            padding: 17px 20px;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 10px;
+            background: var(--accent-bg);
+            font-size: 13px;
+        }
+
+        h2 {
+            margin: 42px 0 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+            font-size: 21px;
+            line-height: 1.4;
+            letter-spacing: -.5px;
+        }
+
+        h3 {
+            margin: 25px 0 9px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        p {
+            margin: 10px 0 14px;
+        }
+
+        ul, ol {
+            padding-left: 23px;
+        }
+
         li {
-            margin-bottom: 10px;
+            padding-left: 3px;
+            margin: 7px 0;
         }
-        hr {
-            margin-top: 40px; 
-            border: 0; 
-            border-top: 1px solid #ecf0f1;
+
+        li::marker {
+            color: var(--accent);
         }
-        
-        /* Mobile-friendly tweaks */
-        @media (max-width: 600px) {
+
+        strong {
+            font-weight: 700;
+        }
+
+        .info-card {
+            margin: 18px 0;
+            padding: 17px 20px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--bg);
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .footer {
+            margin-top: 38px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .footer a {
+            font-weight: 650;
+        }
+
+        @media (max-width: 800px) {
             body {
-                padding: 10px;
+                padding: 17px 12px;
             }
-            .container {
-                padding: 20px;
+
+            .layout {
+                grid-template-columns: 1fr;
             }
-            h1 {
-                font-size: 1.8rem;
+
+            .sidebar {
+                position: static;
+                padding: 15px;
             }
+
+            .sidebar nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 3px;
+            }
+
+            .content {
+                padding: 26px 21px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .content {
+                padding: 22px 16px;
+            }
+
             h2 {
-                font-size: 1.4rem;
+                font-size: 19px;
+            }
+
+            .brand {
+                font-size: 15px;
             }
         }
 
-        /* Dark mode classes */
-        body.dark-mode {
-            background-color: #121212;
-            color: #e0e0e0;
-        }
-        body.dark-mode .container {
-            background-color: #1e1e1e;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
-            color: #ffffff;
-        }
-        body.dark-mode h1 {
-            border-bottom: 3px solid #2980b9;
-        }
-        body.dark-mode h2 {
-            border-bottom: 1px solid #333;
-        }
-        body.dark-mode a {
-            color: #5dade2;
-        }
-        body.dark-mode .date {
-            color: #aaa;
-        }
-        body.dark-mode hr {
-            border-top: 1px solid #333;
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
         }
 
-        /* Auto dark mode based on system preference */
-        @media (prefers-color-scheme: dark) {
-            body:not(.light-mode) {
-                background-color: #121212;
-                color: #e0e0e0;
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+                color: black;
             }
-            body:not(.light-mode) .container {
-                background-color: #1e1e1e;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+            .sidebar, .theme-button {
+                display: none;
             }
-            body:not(.light-mode) h1, body:not(.light-mode) h2, body:not(.light-mode) h3 {
-                color: #ffffff;
+
+            .layout {
+                display: block;
             }
-            body:not(.light-mode) h1 {
-                border-bottom: 3px solid #2980b9;
+
+            .content {
+                padding: 0;
+                border: none;
+                box-shadow: none;
             }
-            body:not(.light-mode) h2 {
-                border-bottom: 1px solid #333;
-            }
-            body:not(.light-mode) a {
-                color: #5dade2;
-            }
-            body:not(.light-mode) .date {
-                color: #aaa;
-            }
-            body:not(.light-mode) hr {
-                border-top: 1px solid #333;
+
+            a {
+                color: inherit;
             }
         }
     </style>
 </head>
+
 <body>
+<div class="page">
 
-    <div class="container">
-        <h1>PRIVACY POLICY</h1>
-        <p class="date"><strong>Effective Date:</strong> 22 May 2026</p>
-        
-        <p>We reserve the right to modify this Privacy Policy at any time. Users will be notified of any significant changes within five (5) days of the update.</p>
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">F</div>
+            <span>Filenest <span class="muted">by Uniquator</span></span>
+        </div>
 
-        <h2>SCOPE</h2>
-        <ul>
-            <li><strong>"We," "Our," and "Us"</strong> refer to Uniquator within this document.</li>
-            <li><strong>"App"</strong> refers to Filenest within this document.</li>
-        </ul>
+        <button class="theme-button" id="themeToggle"
+                type="button" aria-label="Toggle color theme">
+            🌙 Theme
+        </button>
+    </header>
 
-        <h2>COLLECTION OF DATA</h2>
-        <p>We may collect the following information through the App:</p>
-        <ul>
-            <li><strong>Device Information:</strong> Non-personal data such as device model, Android version, signal strength, available storage, hardware specifications, and Device ID. 📱
+    <div class="layout">
+
+        <aside class="sidebar">
+            <p class="sidebar-title">On this page</p>
+            <nav aria-label="Privacy policy sections">
+                <a href="#scope">1. Scope</a>
+                <a href="#collection">2. Data Collection</a>
+                <a href="#local">3. Local Processing</a>
+                <a href="#sharing">4. Data Sharing</a>
+                <a href="#storage">5. Data Protection</a>
+                <a href="#usage">6. Use of Information</a>
+                <a href="#rights">7. Your Rights</a>
+                <a href="#children">8. Children's Privacy</a>
+                <a href="#international">9. International Processing</a>
+                <a href="#security">10. Security</a>
+                <a href="#changes">11. Policy Changes</a>
+                <a href="#contact">12. Contact</a>
+            </nav>
+        </aside>
+
+        <main class="content">
+
+            <section class="hero">
+                <span class="eyebrow">Privacy & Transparency</span>
+                <h1>Privacy Policy</h1>
+                <p class="subtitle">
+                    Your files stay yours. Your privacy matters.
+                </p>
+                <p class="date">
+                    <strong>Effective Date:</strong> 22 May 2026
+                    <br>
+                    <strong>Last Updated:</strong> 23 November 2026
+                </p>
+            </section>
+
+            <div class="notice">
+                <strong>Our privacy approach</strong>
+                <p>
+                    Filenest follows a local-first approach. Core file
+                    processing takes place on your device. We do not
+                    routinely collect your personal files or monitor
+                    your normal application activities.
+                </p>
+            </div>
+
+            <p>
+                Uniquator ("We", "Our", or "Us") respects your privacy
+                and is committed to protecting your information.
+                This Privacy Policy explains how Filenest ("App")
+                collects, processes, stores, and shares information
+                when you use the application and its associated services.
+            </p>
+
+            <p>
+                We reserve the right to modify this Privacy Policy
+                at any time. Significant changes will be communicated
+                through appropriate notification channels within
+                five (5) days of the update.
+            </p>
+
+            <h2 id="scope">1. SCOPE AND DEFINITIONS</h2>
+
+            <ul>
+                <li><strong>Uniquator:</strong> The developer and
+                    operator of Filenest.</li>
+                <li><strong>App:</strong> Refers to the Filenest
+                    Android application.</li>
+                <li><strong>User, You, or Your:</strong> Refers to
+                    an individual using the App.</li>
+                <li><strong>Personal Information:</strong> Information
+                    that identifies or can reasonably be associated
+                    with an individual.</li>
+                <li><strong>Third-Party Services:</strong> External
+                    services, platforms, APIs, and infrastructure
+                    providers integrated into or accessed by the App.</li>
+            </ul>
+
+            <h2 id="collection">2. COLLECTION AND PROCESSING OF INFORMATION</h2>
+
+            <h3>2.1 Normal Application Usage</h3>
+
+            <p>
+                Uniquator does not routinely collect personal
+                information or monitor users' activities during
+                normal application usage.
+            </p>
+
+            <p>
+                Filenest is designed to process files and perform
+                its core functionalities locally on your device.
+            </p>
+
+            <p>We do not routinely collect information about:</p>
+
+            <ul>
+                <li>Files selected for processing.</li>
+                <li>Documents viewed or edited within the App.</li>
+                <li>Images selected for processing.</li>
+                <li>Device status indicators, such as battery percentage.</li>
+                <li>Application appearance preferences, including
+                    Dark Mode and Light Mode.</li>
+            </ul>
+
+            <p>
+                Certain features require internet connectivity and
+                involve limited information processing, as described
+                below.
+            </p>
+
+            <h3>2.2 Bug Reports and Diagnostic Information</h3>
+
+            <p>
+                When a user generates and submits a bug report,
+                the report may include:
+            </p>
+
+            <ul>
+                <li>Public IP address (IPv4 or IPv6).</li>
+                <li>Device manufacturer and model.</li>
+                <li>Android version and operating system information.</li>
+                <li>Hardware specifications.</li>
+                <li>Available storage information.</li>
+                <li>Network-related diagnostic information.</li>
+                <li>Other relevant technical information required
+                    to investigate the reported issue.</li>
+            </ul>
+
+            <p>This information is used for:</p>
+
+            <ul>
+                <li>Investigating reported bugs.</li>
+                <li>Identifying technical problems.</li>
+                <li>Diagnosing compatibility issues.</li>
+                <li>Improving application stability and performance.</li>
+            </ul>
+
+            <p>
+                Diagnostic information is not routinely collected
+                through this reporting mechanism without the
+                relevant bug-report action.
+            </p>
+
+            <h3>2.3 Weekly IP Lookup and Regional Compliance</h3>
+
+            <p>
+                Filenest may periodically perform an IP geolocation
+                lookup, generally once per week, to determine the
+                approximate geographical region of the user.
+            </p>
+
+            <p>The process involves:</p>
+
+            <ol>
+                <li>Obtaining the user's public IP address.</li>
+                <li>Sending the IP address to a trusted third-party
+                    IP geolocation API.</li>
+                <li>Receiving approximate geographical information,
+                    such as the country or state.</li>
+                <li>Using the returned information to determine
+                    applicable regional requirements and application
+                    availability.</li>
+            </ol>
+
+            <div class="info-card">
+                <h3>Purpose of Regional Processing</h3>
+                <p>Regional information may be used for:</p>
                 <ul>
-                    <li>This data is collected only when a user reports a bug.</li>
+                    <li>Complying with applicable laws and regulations
+                        in different countries.</li>
+                    <li>Identifying countries or regions where Filenest
+                        or specific functionalities may be restricted
+                        or unavailable.</li>
+                    <li>Enforcing country-specific application
+                        restrictions.</li>
+                    <li>Enabling or disabling features available only
+                        in certain geographical regions.</li>
+                    <li>Applying regional service availability
+                        requirements.</li>
+                    <li>Supporting other region-dependent application
+                        functionality.</li>
                 </ul>
-            </li>
-            <li><strong>Regional Data:</strong> Your general location (limited to State/Country) via IP address for statistical purposes and policy enforcement.</li>
-            <li><strong>Third-Party Services:</strong> We utilize third-party services including Google Ads.
-                <ul>
-                    <li>These services may collect data according to their own policies. You can check out Google's Policy <a href="https://policies.google.com/privacy" target="_blank">here</a> and Your data safety for Ads <a href="https://safety.google/safety/ads-data" target="_blank">here.</a></li>
-                </ul>
-            </li>
-        </ul>
+            </div>
 
-        <h3>Data processed locally (Not sent to our servers):</h3>
-        <ul>
-            <li>Files selected for processing.</li>
-            <li>Device status indicators (e.g., Dark/Light mode, battery percentage).</li>
-        </ul>
+            <p>
+                <strong>Location Accuracy:</strong>
+            </p>
 
-      
+            <ul>
+                <li>We use IP-based geolocation rather than GPS
+                    positioning for this functionality.</li>
+                <li>We do not use this feature to determine precise
+                    physical coordinates.</li>
+                <li>IP-based geolocation may provide inaccurate
+                    or outdated regional information.</li>
+                <li>Third-party geolocation providers may independently
+                    process IP addresses under their own policies.</li>
+            </ul>
 
-        <h2>DATA PROTECTION & STORAGE</h2>
-        <p>While no method of transmission over the internet is 100% secure, we implement commercially reasonable security measures to protect your information.</p>
-        <ul>
-            <li><strong>Company Servers:</strong> Data collected by us is stored on secure servers.</li>
-            <li><strong>Local Storage:</strong> Data not transmitted to our servers remains stored locally on your device.</li>
-            <li><strong>Cloud Storage:</strong> Files backed up to Google Drive are stored on Google’s servers.</li>
-        </ul>
+            <div class="info-card">
+                <h3>Regional Privacy Control</h3>
+                <p>
+                    Users located in the European Union (EU) and
+                    the State of California, United States, can
+                    disable the optional weekly IP lookup through
+                    the available application setting.
+                </p>
+                <p>
+                    When disabled, Filenest will not initiate the
+                    optional weekly IP geolocation lookup.
+                </p>
+                <p>
+                    Disabling this functionality does not disable
+                    independent network operations, including
+                    update checks, privacy-policy checks, Special Day
+                    requests, bug report submissions, or other
+                    application services.
+                </p>
+            </div>
 
-        <h2>YOUR RIGHTS</h2>
-        <p>You have the following rights regarding your data:</p>
-        <ul>
-            <li><strong>Right to Erasure:</strong> You may request the deletion of data associated with your unique identifier (e.g., Device ID). 🔐</li>
-            <li><strong>Withdrawal of Consent:</strong> You may withdraw your consent for data collection at any time.
-                <ul>
-                    <li>Please note that the App may cease to function upon withdrawal.</li>
-                </ul>
-            </li>
-            <li><strong>Exceptions:</strong> IPv4 or IPv6 addresses are not recognized as unique identities for deletion requests.</li>
-        </ul>
+            <h3>2.4 Periodic Online Checks and Network Communications</h3>
 
-        <h2>CHILDREN’S PRIVACY</h2>
-        <p>We do not knowingly collect data from minors under the age of 13. If we discover that a minor has provided us with personal information, we will immediately delete the associated data.</p>
+            <p>
+                Filenest may periodically connect to the internet
+                to retrieve information necessary for maintaining,
+                updating, and operating the application.
+            </p>
 
-        <h2>USE OF YOUR DATA</h2>
-        <p>We utilize your data for the following purposes:</p>
-        <ul>
-            <li>Statistical analysis and reporting.</li>
-            <li>Improving our services and user experience.</li>
-            <li>Enforcement of our policies and terms.</li>
-        </ul>
+            <p>These communications may include:</p>
 
-        <hr>
-        
-        <p style="text-align: center; margin-top: 20px;">
-            <strong><a href="https://uniquator.github.io" target="_blank">Help Center</a></strong>
-        </p>
+            <ul>
+                <li>
+                    <strong>Application Update Checker:</strong>
+                    Periodically contacts Uniquator's infrastructure
+                    to check whether a newer application version
+                    is available.
+                </li>
+                <li>
+                    <strong>Privacy Policy Checker:</strong>
+                    Retrieves information about the current
+                    Privacy Policy version to identify revisions.
+                </li>
+                <li>
+                    <strong>Regional Availability Checks:</strong>
+                    Retrieves information about regional restrictions,
+                    feature availability, and applicable requirements.
+                </li>
+                <li>
+                    <strong>Other Operational Checks:</strong>
+                    Retrieves configuration information and supports
+                    application maintenance and associated services.
+                </li>
+            </ul>
+
+            <p>
+                These communications may expose standard network
+                information, including the user's IP address, to
+                the relevant servers and service providers.
+            </p>
+
+            <h3>2.5 Special Day Feature</h3>
+
+            <p>
+                Filenest includes a <strong>Special Day</strong>
+                feature that displays information about selected
+                special days, occasions, or events at the top
+                of the application.
+            </p>
+
+            <p>To provide this functionality:</p>
+
+            <ul>
+                <li>The App connects to Uniquator's server
+                    infrastructure hosted through GitHub.</li>
+                <li>It retrieves a list of special days and
+                    related information.</li>
+                <li>The retrieved information is used to determine
+                    whether a special day should be displayed.</li>
+                <li>Retrieved information may be temporarily
+                    cached locally to improve performance and
+                    reduce unnecessary network requests.</li>
+            </ul>
+
+            <p>
+                This functionality does not require access to
+                your personal files, contacts, or precise GPS location.
+            </p>
+
+            <p>
+                The hosting infrastructure may process standard
+                network information, including IP addresses,
+                when the App requests the list. GitHub's own
+                privacy and data-handling practices apply.
+            </p>
+
+            <p>
+                The feature may not display updated information
+                when an internet connection is unavailable.
+            </p>
+
+            <h3>2.6 Third-Party Advertising Services</h3>
+
+            <p>
+                Filenest may integrate Google AdMob to display
+                advertisements.
+            </p>
+
+            <p>
+                Google and its advertising technologies may
+                independently collect or process certain
+                information depending on the advertising
+                configuration, applicable consent, and user settings.
+            </p>
+
+            <p>Such information may include:</p>
+
+            <ul>
+                <li>Advertising identifiers.</li>
+                <li>Device information.</li>
+                <li>IP addresses.</li>
+                <li>Advertising interaction information.</li>
+                <li>Information required for advertising delivery
+                    and measurement.</li>
+            </ul>
+
+            <p>For more information:</p>
+
+            <ul>
+                <li>
+                    <a href="https://policies.google.com/privacy"
+                       target="_blank" rel="noopener noreferrer">
+                        Google Privacy Policy
+                    </a>
+                </li>
+                <li>
+                    <a href="https://policies.google.com/technologies/ads"
+                       target="_blank" rel="noopener noreferrer">
+                        Google Advertising Technologies
+                    </a>
+                </li>
+                <li>
+                    <a href="https://safety.google/safety/ads-data"
+                       target="_blank" rel="noopener noreferrer">
+                        Google Ads Data and Privacy
+                    </a>
+                </li>
+            </ul>
+
+            <h3>2.7 Google Drive Integration</h3>
+
+            <p>
+                If you choose to back up or transfer files using
+                Google Drive functionality, the selected files
+                are transferred to and stored on Google's
+                infrastructure.
+            </p>
+
+            <p>
+                This operation is initiated through the relevant
+                user-facing functionality.
+            </p>
+
+            <p>
+                Files stored through Google Drive are subject
+                to Google's privacy, security, and storage practices.
+                Uniquator does not claim ownership of your files
+                stored in your Google account.
+            </p>
+
+            <h2 id="local">3. INFORMATION PROCESSED LOCALLY</h2>
+
+            <p>
+                Filenest is designed to perform its core
+                file-processing operations locally on your device.
+            </p>
+
+            <p>The following information is generally processed
+                locally and is not routinely transmitted to
+                Uniquator's servers:</p>
+
+            <ul>
+                <li>Files selected for processing.</li>
+                <li>PDF processing information.</li>
+                <li>Image processing information.</li>
+                <li>Temporary files generated during operations.</li>
+                <li>Device status indicators.</li>
+                <li>Application appearance preferences.</li>
+                <li>Other temporary application data required
+                    for local functionality.</li>
+            </ul>
+
+            <p>
+                Information may leave your device when you
+                explicitly use a feature requiring uploading,
+                sharing, backing up, or submitting information,
+                or when a feature requires the network
+                communications described in this policy.
+            </p>
+
+            <h2 id="sharing">4. DATA SHARING AND THIRD-PARTY PROCESSING</h2>
+
+            <p>
+                Uniquator does not sell users' personal information.
+                We may rely on external service providers to
+                operate certain application functionalities.
+            </p>
+
+            <h3>4.1 IP Geolocation Providers</h3>
+
+            <p>
+                When weekly IP lookup is enabled, the user's
+                public IP address is sent to a third-party
+                geolocation API to retrieve approximate
+                regional information.
+            </p>
+
+            <p>
+                The provider may process the IP address according
+                to its own privacy policy and retention practices.
+            </p>
+
+            <h3>4.2 GitHub Infrastructure</h3>
+
+            <p>
+                Filenest uses GitHub-hosted infrastructure to
+                retrieve information for features such as
+                Special Day.
+            </p>
+
+            <p>
+                The hosting infrastructure may process standard
+                network information, including IP addresses,
+                as part of handling requests.
+            </p>
+
+            <h3>4.3 Google Services</h3>
+
+            <p>
+                Google services may be used for advertising
+                and optional Google Drive integration.
+                Information shared with Google depends on
+                the functionality being used and the relevant
+                service configuration.
+            </p>
+
+            <h3>4.4 No Unnecessary File Transfers</h3>
+
+            <p>
+                Normal local file-processing operations do not
+                require uploading users' selected files to
+                Uniquator's servers.
+            </p>
+
+            <p>
+                Files are transferred externally only when
+                a feature explicitly requires it, such as
+                a user-initiated backup or sharing operation.
+            </p>
+
+            <h2 id="storage">5. DATA PROTECTION AND STORAGE</h2>
+
+            <p>
+                We implement commercially reasonable technical
+                and organizational security measures designed
+                to protect information against unauthorized
+                access, alteration, disclosure, or destruction.
+            </p>
+
+            <h3>5.1 Company Servers</h3>
+
+            <p>
+                Information received through bug reports and
+                other application services may be stored on
+                infrastructure operated by Uniquator or
+                its service providers.
+            </p>
+
+            <h3>5.2 Local Storage</h3>
+
+            <p>
+                Information processed locally remains on your
+                device unless you explicitly choose to share,
+                export, or back it up through an available feature.
+            </p>
+
+            <h3>5.3 Third-Party Storage</h3>
+
+            <p>
+                Information processed through Google, GitHub,
+                and other integrated service providers may
+                be stored or processed on their respective
+                infrastructure. Their own privacy and security
+                practices apply.
+            </p>
+
+            <h3>5.4 Data Retention</h3>
+
+            <p>
+                Information is retained only for as long as
+                reasonably necessary to fulfil the purposes
+                for which it was collected, comply with
+                applicable legal obligations, resolve disputes,
+                and enforce relevant policies.
+            </p>
+
+            <p>
+                When information is no longer required,
+                reasonable steps will be taken to delete
+                or anonymize it, where applicable.
+            </p>
+
+            <h2 id="usage">6. HOW WE USE INFORMATION</h2>
+
+            <p>
+                Information collected or processed through
+                Filenest may be used for:
+            </p>
+
+            <ul>
+                <li>Investigating and resolving technical problems.</li>
+                <li>Improving application stability and performance.</li>
+                <li>Determining approximate geographical regions.</li>
+                <li>Enforcing regional restrictions and applicable
+                    legal requirements.</li>
+                <li>Determining regional feature availability.</li>
+                <li>Checking application update availability.</li>
+                <li>Checking Privacy Policy revisions.</li>
+                <li>Providing the Special Day feature.</li>
+                <li>Maintaining application infrastructure.</li>
+                <li>Supporting advertising functionality.</li>
+                <li>Meeting applicable legal and regulatory obligations.</li>
+            </ul>
+
+            <p>
+                We do not intentionally use locally processed
+                files for advertising, profiling, or statistical
+                analysis.
+            </p>
+
+            <h2 id="rights">7. YOUR PRIVACY RIGHTS</h2>
+
+            <p>
+                Depending on your location and applicable data
+                protection laws, you may have the following rights:
+            </p>
+
+            <h3>7.1 Right to Access</h3>
+
+            <p>
+                You may request information about personal
+                information processed by Uniquator.
+            </p>
+
+            <h3>7.2 Right to Correction</h3>
+
+            <p>
+                You may request correction of inaccurate
+                personal information associated with your records.
+            </p>
+
+            <h3>7.3 Right to Erasure</h3>
+
+            <p>
+                You may request deletion of personal information
+                associated with your identifiable records,
+                subject to applicable legal requirements.
+            </p>
+
+            <h3>7.4 Withdrawal of Consent</h3>
+
+            <p>
+                Where processing is based on consent, you may
+                withdraw your consent at any time.
+            </p>
+
+            <p>
+                Withdrawing consent may affect certain
+                functionalities that depend on the relevant
+                processing.
+            </p>
+
+            <h3>7.5 Regional IP Lookup Control</h3>
+
+            <p>
+                Users located in the European Union and
+                California can disable the optional weekly
+                IP lookup through the available application setting.
+            </p>
+
+            <p>
+                This setting controls the optional weekly
+                geolocation operation and does not automatically
+                disable unrelated network communications.
+            </p>
+
+            <h3>7.6 Additional Rights</h3>
+
+            <p>
+                Where applicable, users may also have rights
+                relating to:
+            </p>
+
+            <ul>
+                <li>Restriction of processing.</li>
+                <li>Objection to certain processing activities.</li>
+                <li>Data portability.</li>
+                <li>Opting out of the sale or sharing of personal
+                    information, where applicable.</li>
+                <li>Limiting certain uses of sensitive personal
+                    information, where applicable.</li>
+            </ul>
+
+            <p>
+                These rights depend on the applicable jurisdiction
+                and whether the relevant legal requirements
+                apply to Uniquator.
+            </p>
+
+            <h3>7.7 Limitations</h3>
+
+            <p>
+                Certain technical information, including IP
+                addresses processed through network infrastructure
+                and third-party services, may not always be
+                independently identifiable or retrievable for
+                an individual deletion request.
+            </p>
+
+            <p>
+                Requests will be evaluated and handled in
+                accordance with applicable laws and technical
+                limitations.
+            </p>
+
+            <h2 id="children">8. CHILDREN'S PRIVACY</h2>
+
+            <p>
+                Filenest does not knowingly collect personal
+                information from children under the age of 13
+                in circumstances prohibited by applicable laws.
+            </p>
+
+            <p>
+                If we become aware that personal information
+                has been collected from a child in violation
+                of applicable requirements, we will take
+                reasonable steps to delete the information.
+            </p>
+
+            <p>
+                Where applicable, we comply with relevant
+                age-related privacy, parental consent, and
+                child-protection requirements.
+            </p>
+
+            <h2 id="international">9. INTERNATIONAL DATA PROCESSING</h2>
+
+            <p>
+                Certain third-party services used by Filenest
+                may process or store information in countries
+                outside your country of residence.
+            </p>
+
+            <p>These services may include:</p>
+
+            <ul>
+                <li>Google.</li>
+                <li>GitHub.</li>
+                <li>IP geolocation providers.</li>
+            </ul>
+
+            <p>
+                Where applicable, we take reasonable measures
+                to ensure that international data processing
+                complies with relevant data protection requirements.
+            </p>
+
+            <h2 id="security">10. SECURITY DISCLAIMER</h2>
+
+            <p>
+                Although we implement commercially reasonable
+                security measures, no method of electronic
+                transmission or storage is completely secure.
+            </p>
+
+            <p>
+                We cannot guarantee absolute security against
+                every possible unauthorized access, security
+                incident, or technical failure.
+            </p>
+
+            <p>
+                Users should also take reasonable precautions
+                to protect their devices, accounts, and
+                backed-up files.
+            </p>
+
+            <h2 id="changes">11. CHANGES TO THIS PRIVACY POLICY</h2>
+
+            <p>
+                We may periodically update this Privacy Policy
+                to reflect changes in:
+            </p>
+
+            <ul>
+                <li>Application functionality.</li>
+                <li>Information collection and processing practices.</li>
+                <li>Third-party integrations.</li>
+                <li>Legal and regulatory requirements.</li>
+                <li>Security and operational procedures.</li>
+            </ul>
+
+            <p>
+                Significant changes will be communicated
+                through appropriate notification channels
+                within five (5) days of the update.
+            </p>
+
+            <p>
+                The latest version will be made available
+                through our official Privacy Policy webpage
+                or another designated distribution channel.
+                The Last Updated date will be revised whenever
+                this document is materially updated.
+            </p>
+
+            <h2 id="contact">12. CONTACT INFORMATION</h2>
+
+            <p>
+                For privacy-related questions, complaints,
+                data access requests, correction requests,
+                or deletion requests, contact us:
+            </p>
+
+            <div class="info-card">
+                <h3>Uniquator</h3>
+                <p><strong>Application:</strong> Filenest</p>
+                <p>
+                    <strong>Email:</strong>
+                    <a href="mailto:uniquator@outlook.com">
+                        uniquator@outlook.com
+                    </a>
+                </p>
+                <p>
+                    <strong>Website:</strong>
+                    <a href="https://uniquator.github.io"
+                       target="_blank" rel="noopener noreferrer">
+                        uniquator.github.io
+                    </a>
+                </p>
+            </div>
+
+            <p>
+                We will review privacy-related requests and
+                respond within a reasonable period, subject
+                to applicable legal requirements.
+            </p>
+
+            <footer class="footer">
+                <p><strong>Filenest by Uniquator</strong></p>
+                <p>
+                    Designed with privacy and local-first
+                    processing in mind.
+                </p>
+                <p>
+                    <a href="https://uniquator.github.io"
+                       target="_blank" rel="noopener noreferrer">
+                        Help Center
+                    </a>
+                    &nbsp; · &nbsp;
+                    <a href="mailto:uniquator@outlook.com">
+                        Contact Support
+                    </a>
+                </p>
+                <p>© 2026 Uniquator. All rights reserved.</p>
+            </footer>
+
+        </main>
     </div>
+</div>
 
-    <!-- Script to check for ?dark=1 in the URL -->
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('dark') === '1') {
-            document.body.classList.add('dark-mode');
-        } else if (urlParams.get('dark') === '0') {
-            document.body.classList.add('light-mode'); // Forces light mode if ?dark=0 is used
+<script>
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const params = new URLSearchParams(window.location.search);
+
+    const systemDark = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+    );
+
+    // URL parameter overrides system preference.
+    // ?dark=1 forces dark mode.
+    // ?dark=0 forces light mode.
+    const hasThemeOverride =
+        params.get('dark') === '1' ||
+        params.get('dark') === '0';
+
+    function applyTheme(dark) {
+        body.classList.toggle('dark-mode', dark);
+        themeToggle.textContent = dark ? '☀️ Light' : '🌙 Dark';
+
+        document.querySelector('meta[name="theme-color"]')
+            .setAttribute('content', dark ? '#10141c' : '#f5f7fb');
+    }
+
+    if (params.get('dark') === '1') {
+        applyTheme(true);
+    } else if (params.get('dark') === '0') {
+        applyTheme(false);
+    } else {
+        applyTheme(systemDark.matches);
+    }
+
+    // Follow system theme changes when there is no URL override.
+    systemDark.addEventListener('change', event => {
+        if (!hasThemeOverride) {
+            applyTheme(event.matches);
         }
-    </script>
+    });
+
+    // Manual theme toggle.
+    themeToggle.addEventListener('click', () => {
+        applyTheme(!body.classList.contains('dark-mode'));
+    });
+</script>
+
 </body>
 </html>
