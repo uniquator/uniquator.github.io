@@ -1,4 +1,4 @@
-Version 1.7 Fixes
-* TTS File Issue Fixed
-* Added EU and California Laws Support and Complaince
-* Minor Fixes
+Version 1.8 Changes (MAJOR UPDATE)
+* Added Document Scan
+* Updated Icons
+* Polished UI and Icons
