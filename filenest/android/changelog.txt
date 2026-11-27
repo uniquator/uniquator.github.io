@@ -1,4 +1,3 @@
-Version 1.8 Changes (MAJOR UPDATE)
-* Added Document Scan
-* Updated Icons
-* Polished UI and Icons
+Version 1.9 Changes
+* Added QR Page with Title, Subtitle and Description
+* Improved Storage Locationing and management
